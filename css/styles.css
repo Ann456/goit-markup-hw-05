@@ -100,7 +100,7 @@ a {
   /*transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-property: transform;*/
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 250ms var(--timing-function);
 }
 
 .icon-close {
@@ -113,6 +113,14 @@ a {
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50% 50%;
+  transition: background 250ms var(--timing-function),
+    fill 250ms var(--timing-function);
+}
+
+.icon-close:hover,
+.icon-close:focus {
+  fill: #ffffff;
+  background: var(--logo-color);
 }
 
 /* Хедер */
@@ -163,6 +171,8 @@ a {
   line-height: 1.1;
   letter-spacing: 0.02em;
   fill: Solid;
+
+  transition: color 250ms var(--timing-function);
 }
 
 .menu-nav .item:not(:last-child) {
@@ -193,15 +203,12 @@ a {
   margin-left: auto;
 }
 
-.header-tel-email .link {
-  display: flex;
-  align-items: center;
-}
-
 .icon-smartphone,
 .icon-envelope {
-  fill: var(--tel-color);
+  vertical-align: baseline;
   margin-right: 10px;
+  fill: var(--tel-color);
+  transition: fill 250ms var(--timing-function);
 }
 
 .link:focus .icon-smartphone,
@@ -209,11 +216,12 @@ a {
 .link:focus .icon-envelope,
 .link:hover .icon-envelope {
   fill: var(--logo-color);
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-tel-email .link {
   display: block;
+  align-items: center;
+
   padding-top: 32px;
   padding-bottom: 32px;
 
@@ -223,6 +231,8 @@ a {
   font-size: 14px;
   line-height: 1.1;
   letter-spacing: 0.02em;
+
+  transition: color 250ms var(--timing-function);
 }
 
 .header-tel-email .item + .item {
@@ -238,8 +248,6 @@ a {
 .footer-address:hover,
 .footer-address:focus {
   color: var(--logo-color);
-
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /*--Шапка--*/
@@ -294,14 +302,15 @@ a {
 
   fill: Solid;
   offset: 0px, 4px rgba(0, 0, 0, 0.15);
+
+  transition: background 250ms var(--timing-function),
+    box-shadow 250ms var(--timing-function);
 }
 
 .hero-button:hover,
 .hero-button:focus {
   background: #188ce8;
   box-shadow: 0px 4px 4px var(--button-hero-shadow);
-  border-radius: 4px;
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /*--Особенности--*/
@@ -384,28 +393,35 @@ a {
 
 .img-thumb {
   position: relative;
+  display: flex;
+  align-items: flex-end;
+
   z-index: 1;
 }
 
-.img-thumb p {
+.img-thumb-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  bottom: 0;
 
   height: 70px;
   width: 370px;
+
+  background: rgba(47, 48, 58, 0.8);
+}
+
+.img-thumb-text p {
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
-  line-height: 16px;
-  text-align: center;
-  padding-top: 27px;
+  line-height: 1.14;
+
   letter-spacing: 0.03em;
   text-transform: uppercase;
 
   color: #ffffff;
-
-  background: rgba(47, 48, 58, 0.8);
 }
 
 /*--Постоянные клиенты--*/
@@ -421,31 +437,26 @@ a {
   align-items: center;
   width: 170px;
   height: 92px;
-  fill: #afb1b8;
+
   border: 1px solid #afb1b8;
   border-radius: 4px;
+
+  transition: border 250ms var(--timing-function);
 }
 
 .icon-Logo-thumb:focus,
 .icon-Logo-thumb:hover {
   border: 1px solid var(--logo-color);
-  transition: boreder 250ms var(--timing-function);
 }
 
-.icon-Logo-thumb:focus .icon-Logo,
-.icon-Logo-thumb:hover .icon-Logo,
-.icon-Logo-thumb:focus .icon-Logo-2,
-.icon-Logo-thumb:hover .icon-Logo-2,
-.icon-Logo-thumb:focus .icon-Logo-3,
-.icon-Logo-thumb:hover .icon-Logo-3,
-.icon-Logo-thumb:focus .icon-Logo-4,
-.icon-Logo-thumb:hover .icon-Logo-4,
-.icon-Logo-thumb:focus .icon-Logo-5,
-.icon-Logo-thumb:hover .icon-Logo-5,
-.icon-Logo-thumb:focus .icon-Logo-6,
-.icon-Logo-thumb:hover .icon-Logo-6 {
-  fill: var(--logo-color);
+.icon-Logo-thumb svg {
+  fill: #afb1b8;
   transition: fill 250ms var(--timing-function);
+}
+
+.icon-Logo-thumb:focus svg,
+.icon-Logo-thumb:hover svg {
+  fill: var(--logo-color);
 }
 
 /*--Наша команда--*/
@@ -502,24 +513,21 @@ a {
   margin: 16px 32px 30px 32px;
 }
 
-.team .icon-thumb {
-  fill: #afb1b8;
-}
-
 .icon-thumb {
   display: flex;
   padding: 12px;
   width: 44;
   height: 44;
-
+  fill: #afb1b8;
   border-radius: 50%;
+  transition: background 250ms var(--timing-function),
+    fill 250ms var(--timing-function);
 }
 
 .icon-thumb:hover,
 .icon-thumb:focus {
   fill: var(--footer-logo-color);
   background: var(--logo-color);
-  transition: background 250ms var(--timing-function);
 }
 
 /*--Портфолио--*/
@@ -547,6 +555,9 @@ a {
   letter-spacing: 0.03em;
   cursor: pointer;
   border: 0;
+
+  transition: background 250ms var(--timing-function),
+    color 250ms var(--timing-function);
 }
 
 .filters-button:hover,
@@ -555,8 +566,6 @@ a {
   color: var(--footer-logo-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-
-  transition: background 250ms var(--timing-function);
 }
 
 .filters-button.active {
@@ -597,13 +606,14 @@ a {
   margin-bottom: 30px;
 }
 
+.project .link {
+  transition: box-shadow 250ms var(--timing-function);
+}
+
 .project .link:hover,
 .project .link:focus {
-  background: #ffffff;
-  box-sizing: border-box;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
-  transition: 250ms;
 }
 
 .project-title {
@@ -665,7 +675,7 @@ a {
 .project .item:hover .project-thumb-title,
 .project .item:hover .project-thumb::before {
   transform: translateY(0);
-  transition: transform 250ms var(--timing-function);
+  transition: transform 1250ms var(--timing-function);
 }
 
 /*--Подвал--*/
@@ -707,6 +717,10 @@ a {
   font-weight: 400;
 }
 
+.footer .link {
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 h4 {
   font-family: Roboto;
   font-style: normal;
@@ -737,12 +751,12 @@ h4 {
 .join .icon-thumb {
   fill: white;
   background: rgba(255, 255, 255, 0.1);
+  transition: background 250ms var(--timing-function);
 }
 
 .join .icon-thumb:focus,
 .join .icon-thumb:hover {
   background: var(--logo-color);
-  transition: background 250ms var(--timing-function);
 }
 
 .join .icon-thumb:not(:nth-child(4)) {
